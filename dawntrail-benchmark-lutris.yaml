@@ -1,0 +1,65 @@
+description: '"Final Fantasy XIV - Dawntrail Benchmark" provided by Square Enix.'
+game_slug: final-fantasy-xiv-dawntrail-benchmark
+gogslug: ''
+humblestoreid: ''
+installer_slug: final-fantasy-xiv-dawntrail-benchmark
+name: 'FINAL FANTASY XIV: Dawntrail Benchmark'
+notes: Forked from the Endwalker Benchmark.
+runner: wine
+script:
+  files:
+  - ffxivbensetup: https://download.finalfantasyxiv.com/s9qmq6SJfMMqYM4o/ffxiv-dawntrail-bench.zip
+  game:
+    arch: win64
+    exe: $GAMEDIR/drive_c/Program Files/Dawntrail Benchmark/ffxiv-dawntrail-bench.exe
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      arch: win64
+      description: Creating Wine prefix
+      install_gecko: false
+      install_mono: false
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      app: dotnet48 win10
+      name: winetricks
+      prefix: $GAMEDIR
+  - extract:
+      dst: $GAMEDIR/drive_c/Program Files/Dawntrail Benchmark
+      file: ffxivbensetup
+  - task:
+      arch: win64
+      key: background
+      name: set_regedit
+      path: HKEY_CURRENT_USER\Control Panel\Colors\
+      prefix: $GAMEDIR
+      type: REG_SZ
+      value: 0 0 0
+  wine:
+    version: wine-ge-8-26-x86_64
+    desktop: false
+    dxvk: true
+    dxvk_version: 1.10.3
+    vkd3d: false
+    d3d_extras: false
+    nvapi: true
+    nvapi_version: v0.7.0
+    esync: true
+    fsync: true
+    fsr: false
+    battle_eye: false
+    easy_anti_cheat: false
+    overrides:
+      d3d9: d
+      dxgi: n
+      nvapi: n
+      nvapi64: n
+  env:
+    MANGOHUD: 1
+    DXVK_STATE_CACHE: 1
+    DXVK_STATE_CACHE_PATH: $GAMEDIR/drive_c/users/$USER/Local Settings/Application Data/Dawntrail Benchmark
+slug: final-fantasy-xiv-dawntrail-benchmark
+steamid: null
+version: 7.0 Benchmark
+year: null
