@@ -1,4 +1,4 @@
-# dawntrail-lutris-installer
+# dawntrail-lutris-installer-with-dlss
 
 ## why?
 
