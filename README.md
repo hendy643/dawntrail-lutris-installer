@@ -5,6 +5,9 @@
 DLSS is greyed out when trying to run the benchmark. This fudge allows you to run with DLSS on supported hardware.  
 Are all the things needed? probably not but I got it to work, so I left them all in.
 
+## notes
+The launcher may be a bit mental, but if you can survive it, the benchmark should run fine.
+
 ## Instructions
 - Download the benchmark zip file from the official square enix website.
 - install using this script in lutris.
